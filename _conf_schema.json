@@ -1,0 +1,128 @@
+{
+  "email_address": {
+    "type": "string",
+    "description": "邮箱地址",
+    "hint": "Bot 持有的邮箱地址。",
+    "default": ""
+  },
+  "imap_username": {
+    "type": "string",
+    "description": "IMAP 登录用户名",
+    "hint": "留空时使用 `email_address` 邮箱地址。",
+    "default": ""
+  },
+  "imap_server": {
+    "type": "string",
+    "description": "IMAP 服务器地址",
+    "default": ""
+  },
+  "imap_port": {
+    "type": "int",
+    "description": "IMAP 服务器端口",
+    "hint": "通常为 993。",
+    "default": 993
+  },
+  "imap_password": {
+    "type": "string",
+    "description": "IMAP 应用密码",
+    "hint": "通常为邮箱提供方给定的授权码，而不是登录密码。",
+    "default": ""
+  },
+  "imap_use_tls": {
+    "type": "bool",
+    "description": "启用 IMAP 隐式 TLS",
+    "hint": "建议开启",
+    "default": true
+  },
+  "imap_folder": {
+    "type": "string",
+    "description": "监听的收件文件夹",
+    "hint": "通常为 INBOX。",
+    "default": "INBOX"
+  },
+  "imap_interval": {
+    "type": "float",
+    "description": "收信轮询间隔（秒）",
+    "hint": "最小值 0.5。建议先使用 3 到 10 秒。",
+    "default": 3.0
+  },
+  "enable_agent_inbox_processing": {
+    "type": "bool",
+    "description": "启用邮件 Agent 分析",
+    "hint": "开启后，新邮件正文会发送给当前订阅会话配置的 LLM，用于生成分析和回复草稿。默认关闭，建议开启。",
+    "default": false
+  },
+  "smtp_username": {
+    "type": "string",
+    "description": "SMTP 登录用户名",
+    "hint": "留空时使用 `email_address` 邮箱地址。",
+    "default": ""
+  },
+  "smtp_server": {
+    "type": "string",
+    "description": "SMTP 服务器地址",
+    "default": ""
+  },
+  "smtp_port": {
+    "type": "int",
+    "description": "SMTP 服务器端口",
+    "hint": "通常为 465（TLS）或 587（STARTTLS）。",
+    "default": 465
+  },
+  "smtp_password": {
+    "type": "string",
+    "description": "SMTP 应用密码",
+    "hint": "通常为邮箱提供方给定的授权码，而不是登录密码。",
+    "default": ""
+  },
+  "smtp_security_mode": {
+    "type": "int",
+    "description": "SMTP 加密模式",
+    "hint": "0：明文连接；1：隐式 TLS（通常为 465 端口）；2：STARTTLS（通常为 587 端口）。",
+    "options": [0, 1, 2],
+    "labels": ["明文（不加密）", "隐式 TLS", "STARTTLS"],
+    "default": 1
+  },
+  "smtp_timeout_seconds": {
+    "type": "float",
+    "description": "SMTP 超时时间（秒）",
+    "hint": "用于限制连接和发送阶段的最长等待时间。",
+    "default": 10.0
+  },
+  "smtp_sender_name": {
+    "type": "string",
+    "description": "SMTP 发件人显示名称",
+    "hint": "显示在收件箱中的发件人名称。",
+    "default": "AstrMailbox"
+  },
+  "smtp_prefix": {
+    "type": "string",
+    "description": "邮件主题前缀",
+    "hint": "可选，例如【AstrBot】。",
+    "default": ""
+  },
+  "smtp_max_html_length": {
+    "type": "int",
+    "description": "HTML 正文长度上限",
+    "hint": "超过限制的 HTML 正文在发送前会被拒绝。",
+    "default": 1000
+  },
+  "require_reply_confirmation": {
+    "type": "bool",
+    "description": "Agent 回复邮件前需要询问",
+    "hint": "开启后，Agent 回复已有邮件前必须先取得用户明确确认。建议开启。",
+    "default": true
+  },
+  "allowed_recipient_domains": {
+    "type": "list",
+    "description": "允许发送的收件域名列表",
+    "hint": "为空表示不限制。设置后仅允许发往这些域名。",
+    "default": []
+  },
+  "blocked_recipient_domains": {
+    "type": "list",
+    "description": "禁止发送的收件域名列表",
+    "hint": "命中后直接拒绝发送，优先级高于白名单。",
+    "default": []
+  }
+}
